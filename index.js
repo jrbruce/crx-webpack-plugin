@@ -42,7 +42,7 @@ function Plugin(options) {
 // hook into webpack
 Plugin.prototype.apply = function(compiler) {
   var self = this;
-  return compiler.plugin('done', function() {
+  return compiler.hooks.done.tap('CrxWebpackPlugin', function() {
     self.package.call(self);
   });
 }
